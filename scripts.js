@@ -2,6 +2,9 @@ const timePlace = document.getElementById('timeplace');
 let cityPlace = document.querySelector('select');
 const dataPlace = document.querySelector('#dateplace');
 const updated = document.querySelector('.updated');
+const btn = document.getElementById('timeFormat');
+const format = btn.querySelector('span');
+window.format = 24;
 
 const MONTHS = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
@@ -29,7 +32,15 @@ function checkTime() {
 }
 
 function fixTime(time) {
+    time.setUTCHours(time.getUTCHours()%window.format);
     return (time.getUTCHours() < 10 ? "0" : "") + time.getUTCHours() + ':' + (time.getUTCMinutes()<10 ? "0" : "") + time.getUTCMinutes();
 }
 
 cityPlace.addEventListener("change", checkTime);
+btn.addEventListener("click", ()=>{
+    let currentformat = format.dataset.nextformat;
+    format.dataset.nextformat = format.innerHTML;
+    format.innerHTML = currentformat;
+    window.format = +format.innerHTML;
+    checkTime();
+});

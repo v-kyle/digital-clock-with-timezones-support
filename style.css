@@ -16,7 +16,7 @@ html,body{
 .tab, .tab-title {
     display: inline-block; /* Выстраиваем по горизонтали */
 }
-.tab input[type="radio"] { display: none; }
+.tab input[name="tab-group"] { display: none; }
 .tab-title {
     background: #ccc; /* Цвет фона */
     padding: 5px 10px; /* Поля вокруг текста */
@@ -47,7 +47,7 @@ html,body{
 #timeplace, .city, #dateplace, #citySelect{
     font-weight: bold;
     margin-bottom: 25px;
-    font-size: 3rem;
+    font-size: 2.5rem;
     background: #000;
     color: #fff;
     padding: 10px 15px;
@@ -59,10 +59,26 @@ html,body{
     padding: 5px 10px;
     border-radius: 5px;
     visibility: hidden;
+    margin-top: 20px;
+}
+#timeFormat{
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid gray;
+    background: #ddd;
+    outline: 0;
+}
+#timeFormat:active{
+    background: #bbb;
+}
+#timeFormat span{
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 @media (max-width: 500px) {
     html,body{
-        font-size: 10px;
+        font-size: 9px;
     }
 }
