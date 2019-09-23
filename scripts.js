@@ -1,5 +1,5 @@
 const timePlace = document.getElementById('timeplace');
-const cityPlace = document.querySelector('.city');
+let cityPlace = document.querySelector('select');
 const dataPlace = document.querySelector('#dateplace');
 const updated = document.querySelector('.updated');
 
@@ -9,16 +9,19 @@ checkTime();
 setInterval(checkTime, 1000*60);
 
 function checkTime() {
-    fetch("http://worldtimeapi.org/api/timezone/Europe/Moscow")
+
+    fetch("http://worldtimeapi.org/api/timezone/"+cityPlace.value)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            cityPlace.innerHTML = data.timezone;
-            return new Date(data.datetime);
+            let offset = +data.utc_offset.slice(0,3);
+            let time = new Date(data.datetime);
+            time.setHours(time.getHours() + offset);
+            return time;
         })
         .then(time => {
             timePlace.innerHTML = fixTime(time);
-            dataPlace.innerHTML = time.getDate() + " " + MONTHS[time.getMonth()] + " "  + time.getFullYear() + " года";
+            dataPlace.innerHTML = time.getUTCDate() + " " + MONTHS[time.getUTCMonth()] + " "  + time.getUTCFullYear() + " года";
             updated.style.visibility = "visible";
             setTimeout(()=>updated.style.visibility = "hidden", 3000);
         })
@@ -26,5 +29,7 @@ function checkTime() {
 }
 
 function fixTime(time) {
-    return (time.getHours()<10 ? "0" : "") + time.getHours() + ':' + (time.getMinutes()<10 ? "0" : "") + time.getMinutes();
+    return (time.getUTCHours() < 10 ? "0" : "") + time.getUTCHours() + ':' + (time.getUTCMinutes()<10 ? "0" : "") + time.getUTCMinutes();
 }
+
+cityPlace.addEventListener("change", checkTime);

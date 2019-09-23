@@ -44,7 +44,7 @@ html,body{
     display: flex; /* Показываем активную вкладку */
 }
 
-#timeplace, .city, #dateplace{
+#timeplace, .city, #dateplace, #citySelect{
     font-weight: bold;
     margin-bottom: 25px;
     font-size: 3rem;

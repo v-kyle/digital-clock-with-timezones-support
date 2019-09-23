@@ -14,7 +14,13 @@
         <input type="radio" id="tab1" name="tab-group" checked>
         <label for="tab1" class="tab-title">Электронный формат</label>
         <section class="tab-content">
-            <span class="city">City</span>
+            <select name="select" id="citySelect">
+                <option value="Europe/Moscow" selected>Europe/Moscow</option>
+                <option value="Europe/London">Europe/London</option>
+                <option value="Asia/Tokyo">Asia/Tokyo</option>
+                <option value="Africa/Cairo">Africa/Cairo</option>
+                <option value="America/New_York">America/New_York</option>
+            </select>
             <span id="timeplace">--:--</span>
             <span id="dateplace">------</span>
             <div class="updated">Время синхронизировано</div>
