@@ -1,0 +1,68 @@
+html,body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+
+.tabs {
+    height: 100%;
+    max-width: 100%;
+    position: relative; /* Относительное позиционирование */
+}
+.tab, .tab-title {
+    display: inline-block; /* Выстраиваем по горизонтали */
+}
+.tab input[type="radio"] { display: none; }
+.tab-title {
+    background: #ccc; /* Цвет фона */
+    padding: 5px 10px; /* Поля вокруг текста */
+    border: 1px solid #666; /* Параметры рамки */
+    border-bottom: none; /* Снизу линию убираем */
+}
+.tab-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    background: #fff;
+    height: 80%;
+    position: absolute; /* Абсолютное позиционирование */
+    left: 0; /* Размещаем у левого края */
+    width: 100%;
+    display: none; /* Прячем вкладку */
+}
+.tab :checked + .tab-title {
+    position: relative; /* Относительное позиционирование */
+    background: #fff; /* Цвет фона */
+    z-index: 1; /* Отображаем поверх содержимого */
+}
+.tab :checked ~ .tab-content {
+    display: flex; /* Показываем активную вкладку */
+}
+
+#timeplace, .city, #dateplace{
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 3rem;
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.updated{
+    margin-top: 10px;
+    background: #ffaa00;
+    padding: 5px 10px;
+    border-radius: 5px;
+    visibility: hidden;
+}
+
+@media (max-width: 500px) {
+    html,body{
+        font-size: 12px;
+    }
+}
