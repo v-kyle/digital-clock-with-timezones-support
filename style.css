@@ -11,17 +11,17 @@ html,body{
 .tabs {
     height: 100%;
     max-width: 100%;
-    position: relative; /* Относительное позиционирование */
+    position: relative;
 }
 .tab, .tab-title {
-    display: inline-block; /* Выстраиваем по горизонтали */
+    display: inline-block;
 }
 .tab input[name="tab-group"] { display: none; }
 .tab-title {
-    background: #ccc; /* Цвет фона */
-    padding: 5px 10px; /* Поля вокруг текста */
-    border: 1px solid #666; /* Параметры рамки */
-    border-bottom: none; /* Снизу линию убираем */
+    background: #ccc;
+    padding: 5px 10px;
+    border: 1px solid #666;
+    border-bottom: none;
 }
 .tab-content {
     flex-direction: column;
@@ -30,18 +30,18 @@ html,body{
     margin-top: 25px;
     background: #fff;
     height: 80%;
-    position: absolute; /* Абсолютное позиционирование */
-    left: 0; /* Размещаем у левого края */
+    position: absolute;
+    left: 0;
     width: 100%;
-    display: none; /* Прячем вкладку */
+    display: none;
 }
 .tab :checked + .tab-title {
-    position: relative; /* Относительное позиционирование */
-    background: #fff; /* Цвет фона */
-    z-index: 1; /* Отображаем поверх содержимого */
+    position: relative;
+    background: #fff;
+    z-index: 1;
 }
 .tab :checked ~ .tab-content {
-    display: flex; /* Показываем активную вкладку */
+    display: flex;
 }
 
 #timeplace, .city, #dateplace, #citySelect{
@@ -77,8 +77,13 @@ html,body{
     font-weight: bold;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
     html,body{
         font-size: 9px;
+    }
+}
+@media (min-width: 401px) and (max-width: 700px) {
+    html,body{
+        font-size: 11px;
     }
 }
