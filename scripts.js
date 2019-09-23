@@ -13,7 +13,7 @@ setInterval(checkTime, 1000*60);
 
 function checkTime() {
 
-    fetch("http://worldtimeapi.org/api/timezone/"+cityPlace.value)
+    fetch("https://worldtimeapi.org/api/timezone/"+cityPlace.value)
         .then(response => response.json())
         .then(data => {
             console.log(data);
