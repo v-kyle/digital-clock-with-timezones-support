@@ -52,9 +52,9 @@ html,body{
     color: #fff;
     padding: 10px 15px;
     border-radius: 10px;
+    text-align: center;
 }
 .updated{
-    margin-top: 10px;
     background: #ffaa00;
     padding: 5px 10px;
     border-radius: 5px;
@@ -63,6 +63,6 @@ html,body{
 
 @media (max-width: 500px) {
     html,body{
-        font-size: 12px;
+        font-size: 10px;
     }
 }
