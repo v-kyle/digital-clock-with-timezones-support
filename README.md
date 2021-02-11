@@ -1,3 +1,3 @@
-# test-task-digital-clock-with-support-for-time-zones
+# The digital clock with timezones support
 
-ТЗ для принятия в компанию, реализация цифровых часов с поддержкой тайм-зон на чистом JS
+Реализация цифровых часов с поддержкой тайм-зон на чистом JS

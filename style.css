@@ -20,7 +20,7 @@ html,body{
 .tab-title {
     background: #ccc;
     padding: 5px 10px;
-    border: 1px solid #666;
+    border-right: 1px solid #666;
     border-bottom: none;
 }
 .tab-content {

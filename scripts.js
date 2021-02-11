@@ -4,16 +4,33 @@ const dataPlace = document.querySelector('#dateplace');
 const updated = document.querySelector('.updated');
 const btn = document.getElementById('timeFormat');
 const format = btn.querySelector('span');
-window.format = 24;
+
+function timeFormat() {
+  let format = 24;
+  function getFormat() {
+    return format;
+  }
+  
+  function toggleFormat() {
+    format = format === 24 ? 12 : 24;
+    return format;
+  }
+  
+  return {
+    get: getFormat,
+    toggle: toggleFormat,
+  }
+}
+
+const timeFormatUtil = timeFormat();
 
 const MONTHS = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
 checkTime();
-setInterval(checkTime, 1000*60);
+setInterval(checkTime, 1000 * 60);
 
 function checkTime() {
-
-    fetch("https://worldtimeapi.org/api/timezone/"+cityPlace.value)
+    fetch("https://worldtimeapi.org/api/timezone/" + cityPlace.value)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -26,21 +43,18 @@ function checkTime() {
             timePlace.innerHTML = fixTime(time);
             dataPlace.innerHTML = time.getUTCDate() + " " + MONTHS[time.getUTCMonth()] + " "  + time.getUTCFullYear() + " года";
             updated.style.visibility = "visible";
-            setTimeout(()=>updated.style.visibility = "hidden", 3000);
+            setTimeout(() => updated.style.visibility = "hidden", 3000);
         })
         .catch(err => console.log(err));
 }
 
 function fixTime(time) {
-    time.setUTCHours(time.getUTCHours()%window.format);
+    time.setUTCHours(time.getUTCHours() % timeFormatUtil.get());
     return (time.getUTCHours() < 10 ? "0" : "") + time.getUTCHours() + ':' + (time.getUTCMinutes()<10 ? "0" : "") + time.getUTCMinutes();
 }
 
 cityPlace.addEventListener("change", checkTime);
 btn.addEventListener("click", ()=>{
-    let currentformat = format.dataset.nextformat;
-    format.dataset.nextformat = format.innerHTML;
-    format.innerHTML = currentformat;
-    window.format = +format.innerHTML;
+    format.innerHTML = String(timeFormatUtil.toggle());
     checkTime();
 });
